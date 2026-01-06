@@ -1,6 +1,5 @@
 
 plugins {
-    id("java")
     id("application") // добавляем, чтобы можно было запускать main()
     id("com.github.ben-manes.versions") version "0.53.0"
 }
