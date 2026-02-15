@@ -8,7 +8,7 @@ public class Progression {
     public static final String DESCRIPTION = "What number is missing in the progression?";
     private static final int MAX_STEP = 10;
     private static final int MAX_START = 100;
-    private static final int LENGTH = 8;
+    private static final int LENGTH = 10;
 
     public static void play() {
         Engine.run(DESCRIPTION, getGameData());
