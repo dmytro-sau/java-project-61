@@ -27,14 +27,28 @@ public class App {
         String choice = scanner.next();
 
         switch (choice) {
-            case "1" -> Cli.welcome();
-            case "2" -> Even.play();
-            case "3" -> Calc.play();
-            case "4" -> GCD.play();
-            case "5" -> Progression.play();
-            case "6" -> Prime.play();
-            case "0" -> {return;}
-            default -> System.out.println("Invalid input");
+            case "1":
+                Cli.welcome();
+                break;
+            case "2":
+                Even.play();
+                break;
+            case "3":
+                Calc.play();
+                break;
+            case "4":
+                GCD.play();
+                break;
+            case "5":
+                Progression.play();
+                break;
+            case "6":
+                Prime.play();
+                break;
+            case "0":
+                break;
+            default:
+                System.out.println("Invalid input");
         }
     }
 
