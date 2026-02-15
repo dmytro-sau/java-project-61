@@ -1,38 +1,29 @@
 package hexlet.code.games;
 
 import java.util.Random;
-import java.util.Scanner;
+import hexlet.code.Engine;
+import static hexlet.code.Engine.NUMBER_OF_ROUNDS;
 
 
 public class Even {
-    public static final String GAME_RULE = "Answer 'yes' if the number is even, otherwise answer 'no'.";
-    private static final int MAX_RANDOM_NUMBER = 20;
-    private static final int ROUNDS_COUNT = 3;
-
-    public static void playEven(Scanner scanner) {
+    public static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+    public static final int MAX_RANDOM_NUMBER = 20;
+    
+    public static void play() {
+        Engine.run(DESCRIPTION, getGameData());
+    }
+    private static String[][] getGameData() {
+        String[][] rounds = new String[NUMBER_OF_ROUNDS][2];
         Random random = new Random();
 
-        System.out.println(GAME_RULE);
-
-        for (int i = 0; i < ROUNDS_COUNT; i++) {
-            int number = random.nextInt(MAX_RANDOM_NUMBER) + 1;
-            String correctAnswer = isEven(number) ? "yes" : "no";
-
-            System.out.println("Question: " + number);
-            System.out.print("Your answer: ");
-            String userAnswer = scanner.next();
-
-            if (!userAnswer.equalsIgnoreCase(correctAnswer)) {
-                System.out.println("'" + userAnswer + "' is wrong answer ;(. Correct answer was '" + correctAnswer + "'.");
-                System.out.println("Let's try again!");
-                return;
-            }
-
-            System.out.println("Correct!");
+        for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
+            int  number = random.nextInt(MAX_RANDOM_NUMBER) + 1;
+            rounds[i][0] = Integer.toString(number);
+            rounds[i][1] = isEven(number) ? "yes" : "no";
         }
-
-        System.out.println("Congratulations!");
+        return rounds;
     }
+
     private static boolean isEven(int number) {
         return number % 2 == 0;
     }
