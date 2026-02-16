@@ -25,7 +25,7 @@ public class GCD {
 
         return rounds;
     }
-    
+
     private static int calculateGCD(int a, int b) {
         while (b != 0) {
             int temp = b;
