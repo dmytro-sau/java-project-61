@@ -14,7 +14,7 @@ public class Prime {
 
     private static String[][] getGameData() {
         String[][] rounds = new String[NUMBER_OF_ROUNDS][2];
-        
+
         for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
             int number = Util.getRandomNumber(MAX_RANDOM_NUMBER);
             rounds[i][0] = Integer.toString(number);
@@ -27,7 +27,7 @@ public class Prime {
     private static boolean isPrime(int number) {
         if (number <= 1) {
             return false;
-        } 
+        }
         for (int i = 2; i * i <= number; i++) {
             if (number % i == 0) {
                 return false;

@@ -20,7 +20,7 @@ public class Calc {
             int numberOne = Util.getRandomNumber(MAX_RANDOM_NUMBER);
             int numberTwo = Util.getRandomNumber(MAX_RANDOM_NUMBER);
             rounds[i][0] = numberOne + " " + operator + " " + numberTwo;
-            rounds[i][1] = String.valueOf(calculate(numberOne, numberTwo, operator));    
+            rounds[i][1] = String.valueOf(calculate(numberOne, numberTwo, operator));
         }
 
         return rounds;

@@ -8,7 +8,7 @@ import static hexlet.code.Engine.NUMBER_OF_ROUNDS;
 public class Even {
     public static final String DESCRIPTION = "Answer 'yes' if the number is even, otherwise answer 'no'.";
     public static final int MAX_RANDOM_NUMBER = 20;
-    
+
     public static void play() {
         Engine.run(DESCRIPTION, getGameData());
     }
