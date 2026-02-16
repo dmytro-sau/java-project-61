@@ -1,48 +1,49 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Util;
 import static hexlet.code.Engine.NUMBER_OF_ROUNDS;
 
 public class Progression {
-    public static final String DESCRIPTION = "What number is missing in the progression?";
+
+    private static final String DESCRIPTION = "What number is missing in the progression?";
     private static final int MAX_STEP = 10;
     private static final int MAX_START = 100;
-    private static final int LENGTH = 10;
+    private static final int PROGRESSION_LENGTH = 8;
 
     public static void play() {
-        Engine.run(DESCRIPTION, getGameData());
+        Engine.run(DESCRIPTION, generateGameData());
     }
 
-    private static String[][] getGameData() {
+    private static String[][] generateGameData() {
         String[][] rounds = new String[NUMBER_OF_ROUNDS][2];
-        Random random = new Random();
 
-        for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
-            int step = random.nextInt(MAX_STEP) + 1;
-            int start = random.nextInt(MAX_START) + 1;
-            int hiddenIndex = random.nextInt(LENGTH);
+        for (int roundIndex = 0; roundIndex < NUMBER_OF_ROUNDS; roundIndex++) {
 
-            StringBuilder progression = new StringBuilder();
-            int hiddenNumber = 0;
+            int step = Util.getRandomNumber(MAX_STEP) + 1;
+            int startValue = Util.getRandomNumber(MAX_START);
+            int hiddenIndex = Util.getRandomNumber(PROGRESSION_LENGTH);
 
-            for (int j = 0; j < LENGTH; j++) {
-                int current = start + j * step;
-                if (j == hiddenIndex) {
-                    progression.append("..");
-                    hiddenNumber = current;
-                } else {
-                    progression.append(current);
-                }
-                if (j < LENGTH - 1) {
-                    progression.append(" ");
-                }
-            }
+            String[] progression = buildProgression(startValue, step, PROGRESSION_LENGTH);
 
-            rounds[i][0] = progression.toString();
-            rounds[i][1] = String.valueOf(hiddenNumber);
+            String correctAnswer = progression[hiddenIndex];
+            progression[hiddenIndex] = "..";
+
+            rounds[roundIndex][0] = String.join(" ", progression);
+            rounds[roundIndex][1] = correctAnswer;
         }
 
         return rounds;
+    }
+
+    private static String[] buildProgression(int startValue, int step, int length) {
+        String[] progression = new String[length];
+
+        for (int index = 0; index < length; index++) {
+            int currentValue = startValue + index * step;
+            progression[index] = Integer.toString(currentValue);
+        }
+
+        return progression;
     }
 }

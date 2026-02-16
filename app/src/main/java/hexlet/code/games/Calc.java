@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import java.util.Random;
+import hexlet.code.Util;
 import static hexlet.code.Engine.NUMBER_OF_ROUNDS;
 
 public class Calc {
@@ -14,17 +14,13 @@ public class Calc {
     }
     private static String[][] getGameData() {
         String[][] rounds = new String[NUMBER_OF_ROUNDS][2];
-        Random random = new Random();
 
         for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
-            String operator = OPERATORS[random.nextInt(OPERATORS.length)];
-            int numberOne = random.nextInt(MAX_RANDOM_NUMBER);
-            int numberTwo = random.nextInt(MAX_RANDOM_NUMBER);
-            String question = numberOne + " " + operator + " " + numberTwo;
-            String correctAnswer = String.valueOf(calculate(numberOne, numberTwo, operator));
-
-            rounds[i][0] = question;
-            rounds[i][1] = correctAnswer;
+            String operator = OPERATORS[Util.getRandomNumber(OPERATORS.length - 1)];
+            int numberOne = Util.getRandomNumber(MAX_RANDOM_NUMBER);
+            int numberTwo = Util.getRandomNumber(MAX_RANDOM_NUMBER);
+            rounds[i][0] = numberOne + " " + operator + " " + numberTwo;
+            rounds[i][1] = String.valueOf(calculate(numberOne, numberTwo, operator));    
         }
 
         return rounds;

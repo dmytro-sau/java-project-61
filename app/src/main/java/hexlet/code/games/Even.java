@@ -1,6 +1,6 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Util;
 import hexlet.code.Engine;
 import static hexlet.code.Engine.NUMBER_OF_ROUNDS;
 
@@ -14,10 +14,8 @@ public class Even {
     }
     private static String[][] getGameData() {
         String[][] rounds = new String[NUMBER_OF_ROUNDS][2];
-        Random random = new Random();
-
         for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
-            int  number = random.nextInt(MAX_RANDOM_NUMBER) + 1;
+            int number = Util.getRandomNumber(MAX_RANDOM_NUMBER);
             rounds[i][0] = Integer.toString(number);
             rounds[i][1] = isEven(number) ? "yes" : "no";
         }
