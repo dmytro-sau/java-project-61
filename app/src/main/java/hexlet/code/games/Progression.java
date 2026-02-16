@@ -18,19 +18,18 @@ public class Progression {
     private static String[][] generateGameData() {
         String[][] rounds = new String[NUMBER_OF_ROUNDS][2];
 
-        for (int roundIndex = 0; roundIndex < NUMBER_OF_ROUNDS; roundIndex++) {
+        for (int round = 0; round < NUMBER_OF_ROUNDS; round++) {
+            int step = Util.getRandomNumber(MAX_STEP);
+            int hiddenIndex = Util.getRandomNumber(PROGRESSION_LENGTH - 1);
+            int start = Util.getRandomNumber(MAX_START);
 
-            int step = Util.getRandomNumber(MAX_STEP) + 1;
-            int startValue = Util.getRandomNumber(MAX_START);
-            int hiddenIndex = Util.getRandomNumber(PROGRESSION_LENGTH);
-
-            String[] progression = buildProgression(startValue, step, PROGRESSION_LENGTH);
+            String[] progression = buildProgression(start, step, PROGRESSION_LENGTH);
 
             String correctAnswer = progression[hiddenIndex];
             progression[hiddenIndex] = "..";
 
-            rounds[roundIndex][0] = String.join(" ", progression);
-            rounds[roundIndex][1] = correctAnswer;
+            rounds[round][0] = String.join(" ", progression);
+            rounds[round][1] = correctAnswer;
         }
 
         return rounds;
@@ -39,9 +38,8 @@ public class Progression {
     private static String[] buildProgression(int startValue, int step, int length) {
         String[] progression = new String[length];
 
-        for (int index = 0; index < length; index++) {
-            int currentValue = startValue + index * step;
-            progression[index] = Integer.toString(currentValue);
+        for (int i = 0; i < length; i++) {
+            progression[i] = Integer.toString(startValue + step * i);
         }
 
         return progression;
