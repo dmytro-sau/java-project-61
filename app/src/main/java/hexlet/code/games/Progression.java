@@ -20,7 +20,7 @@ public class Progression {
 
         for (int i = 0; i < NUMBER_OF_ROUNDS; i++) {
             int step = random.nextInt(MAX_STEP) + 1;
-            int start = random.nextInt(MAX_START);
+            int start = random.nextInt(MAX_START) + 1;
             int hiddenIndex = random.nextInt(LENGTH);
 
             StringBuilder progression = new StringBuilder();
